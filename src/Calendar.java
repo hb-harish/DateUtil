@@ -1,0 +1,74 @@
+import java.util.GregorianCalendar;
+
+public class Calendar 
+{
+	public String displayCalendar(int month, int year)
+	{
+		
+		String months[] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Dec"};
+		int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		boolean bLeapYear = false;
+		bLeapYear = (year % 4 == 0);
+		bLeapYear = bLeapYear && (year % 100 != 0);
+		bLeapYear = bLeapYear || (year % 400 == 0);
+		month = month -1;
+		if (bLeapYear && month ==1)
+			days[month] = 29;
+		GregorianCalendar gc = new GregorianCalendar(year,month,1);
+		//String m = months[gc.get(Calendar.month)];
+		String dayf = String.format("%s %s %s %s %s %s %s\n","Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
+		
+		int d = gc.get(gc.DAY_OF_WEEK);
+		d = d-1;
+		String b = "";
+		String c = "";
+		for (int i = 0; i < d; i++)
+            b = String.format("%s    ",b);
+        for (int i = 1; i <= days[month]; i++) 
+        {
+            c = String.format("%s %2d ",c,i);
+            if (((i + d) % 7 == 0) || (i == days[month])) c =String.format("%s\n",c);
+        }
+        return String.format( "\n         "+ months[month] + " " + year +
+				"\n---------------------------\n" + dayf + b + c);
+		
+	}
+	
+	public boolean isLeapYear(int year)
+	{
+		//returns t/f if the year is a leap year
+		// leap years are all years divisible by 4 but not 100
+		// years that are divisible by 400 are leap years, too
+		// is it divisible by 4?
+		// Note that the year is not passed as an argument. It could be but 
+		// I choose to use the class level private variable for my method.
+		boolean bLeapYear = false;
+		bLeapYear = (year % 4 == 0);
+		// is it divisible by 4 and not 100
+		bLeapYear = bLeapYear && (year % 100 != 0);
+		// is it divisible by 4 and not 100 unless it's divisible by 400
+		bLeapYear = bLeapYear || (year % 400 == 0);
+		return bLeapYear;
+	}
+	
+	public int getLastDayOfMonth(int month, int year)
+	{
+		int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		int ld;
+		boolean bLeapYear = false;
+		bLeapYear = (year % 4 == 0);
+		bLeapYear = bLeapYear && (year % 100 != 0);
+		bLeapYear = bLeapYear || (year % 400 == 0);
+		month = month -1;
+		ld = days[month];
+		if (bLeapYear && month ==1) ld =29;
+		return ld;
+	}
+	public String toString(int month, int day, int year, String d)
+	{
+		return String.format("%2d%s%2d%s%2d",month,d,day,d,(year%100));
+	}
+	
+	
+	
+}
