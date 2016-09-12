@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Calendar 
@@ -68,6 +69,29 @@ public class Calendar
 	{
 		return String.format("%2d%s%2d%s%2d",month,d,day,d,(year%100));
 	}
+	
+	public float daysbw(int m1, int d1, int y1, int m2, int d2, int y2)
+	{
+		m1 = m1 - 1;
+		m2 = m2 - 1;
+		GregorianCalendar gc1 = new GregorianCalendar(y1,m1,d1);
+		GregorianCalendar gc2 = new GregorianCalendar(y2,m2,d2);
+		long myDate1 = gc1.getTimeInMillis();
+		long myDate2 = gc2.getTimeInMillis();
+		long millisecondsPerDay = (24*60*60*1000);
+		float numberOfDays = (myDate2-myDate1)/millisecondsPerDay;
+		return numberOfDays;
+	
+	}
+	public String DayOfWeek(int m, int d, int y)
+	{
+		GregorianCalendar gc = new GregorianCalendar(y,m-1,d);
+		int dw = gc.get(gc.DAY_OF_WEEK);
+		dw = dw -1;
+		String days[]= {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+		return days[dw];
+	}
+	
 	
 	
 	
