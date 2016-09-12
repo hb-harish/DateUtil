@@ -1,7 +1,9 @@
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Scanner;
 
-public class Calendar 
+public class DateUtil 
 {
 	public String displayCalendar(int month, int year)
 	{
@@ -83,6 +85,42 @@ public class Calendar
 		return numberOfDays;
 	
 	}
+	
+	public float daysbw(String a, String b)
+	{
+		Scanner sc1 = new Scanner(a);
+		sc1.useDelimiter("/");
+		Scanner sc2 = new Scanner(b);
+		sc2.useDelimiter("/");
+		int m1 = sc1.nextInt();
+		int m2 = sc2.nextInt();
+		int d1 = sc1.nextInt();
+		int d2 = sc2.nextInt();
+		int y1 = sc1.nextInt();
+		int y2 = sc2.nextInt();
+		m1 = m1 - 1;
+		m2 = m2 - 1;
+		GregorianCalendar gc1 = new GregorianCalendar(y1,m1,d1);
+		GregorianCalendar gc2 = new GregorianCalendar(y2,m2,d2);
+		long myDate1 = gc1.getTimeInMillis();
+		long myDate2 = gc2.getTimeInMillis();
+		long millisecondsPerDay = (24*60*60*1000);
+		float numberOfDays = (myDate2-myDate1)/millisecondsPerDay;
+		return numberOfDays;
+	
+	}
+	public float daysAgo(int m1, int d1, int y1)
+	{
+		m1 = m1 - 1;
+		Date d = Calendar.getInstance().getTime();
+		GregorianCalendar gc1 = new GregorianCalendar(y1,m1,d1);
+		long myDate1 = gc1.getTimeInMillis();
+		long myDate2 = d.getTime();
+		long millisecondsPerDay = (24*60*60*1000);
+		float numberOfDays = (myDate2-myDate1)/millisecondsPerDay;
+		return numberOfDays;
+	
+	}
 	public String DayOfWeek(int m, int d, int y)
 	{
 		GregorianCalendar gc = new GregorianCalendar(y,m-1,d);
@@ -91,7 +129,11 @@ public class Calendar
 		String days[]= {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 		return days[dw];
 	}
-	
+	public Date now()
+	{
+		Date d = Calendar.getInstance().getTime();
+		return d;
+	}
 	
 	
 	
