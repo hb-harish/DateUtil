@@ -9,10 +9,11 @@ public class DateApp
 		System.out.println(c.getLastDayOfMonth(10,2016));
 		System.out.println(c.toString(10,28, 2016,"/"));
 		System.out.println(c.daysbw(4,3,2016,4,4,2016));
-		System.out.println(c.daysbw("4/3/2016","4/4/2016"));
+		System.out.println(c.daysbw("4/1/2016","4/4/2016"));
 		System.out.println(c.DayOfWeek(9,12,2016));
 		System.out.println(c.daysAgo(9,10,2016));
 		System.out.println(c.now());
+		System.out.println(c.nowf());
 		
 	}
 	

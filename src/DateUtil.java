@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -133,6 +134,12 @@ public class DateUtil
 	{
 		Date d = Calendar.getInstance().getTime();
 		return d;
+	}
+	public String nowf()
+	{
+		Date date = Calendar.getInstance().getTime();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	 	return sdf.format(date);
 	}
 	
 	
