@@ -135,7 +135,7 @@ public class DateUtil
 		Date d = Calendar.getInstance().getTime();
 		return d;
 	}
-	public String nowf(String s)
+	public String now(String s)
 	{
 		Date date = Calendar.getInstance().getTime();
 		SimpleDateFormat sdf = new SimpleDateFormat(s);
