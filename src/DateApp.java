@@ -13,7 +13,7 @@ public class DateApp
 		System.out.println(c.DayOfWeek(9,12,2016));
 		System.out.println(c.daysAgo(9,10,2016));
 		System.out.println(c.now());
-		System.out.println(c.nowf());
+		System.out.println(c.nowf("dd-MM-yyyy"));
 		
 	}
 	

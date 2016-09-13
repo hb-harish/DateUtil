@@ -135,10 +135,10 @@ public class DateUtil
 		Date d = Calendar.getInstance().getTime();
 		return d;
 	}
-	public String nowf()
+	public String nowf(String s)
 	{
 		Date date = Calendar.getInstance().getTime();
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat(s);
 	 	return sdf.format(date);
 	}
 	
